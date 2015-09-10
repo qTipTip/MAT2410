@@ -1,0 +1,77 @@
+\documentclass[10pt]{amsart}
+
+\usepackage[]{libertine} 
+\usepackage[]{blindtext} 
+\usepackage[]{enumerate} 
+\usepackage[]{cleveref} 
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}
+
+
+\title{
+  Mandatory assignment 1 \\ 
+  \hrulefill\fbox{MAT2410}\hrulefill
+}
+\author{
+  Ivar Haugal\o kken Stangeby
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{exercise}\hfill
+  \begin{enumerate}[a)]
+    \item We wish to show that a circle $C \subset \C$ can be expressed equivalently as the set
+  of points $z \in \C$ that satisfy
+  \begin{equation}
+    \notag
+    C = \left\{ z \in \C \mid z\bar{z} - \bar{z_0}z - z_0\bar{z} + |z_0|^2 - r^2 = 0 \, \right\},
+  \end{equation}
+  where the typical expression reads
+  \begin{equation}
+    \notag
+    C = \left\{ z \in \C \mid |z - z_0| = r \right\}.
+  \end{equation}
+  Taking the expression $|z - z_0| = r$, squaring both sides and using the identity
+  ${|w|^2 = w\bar{w}}$ for any complex number $w$ we achieve
+  \begin{align}
+    \label{e:orig}
+    \begin{split}
+    |z - z_0|^2 - r^2 &= (z - z_0)(\bar{z} - \bar{z_0}) - r^2 \\
+                      &= z\bar{z} - \bar{z_0}z - z_0\bar{z} + |z_0|^2 - r^2 \\
+                      &= 0.
+    \end{split}
+  \end{align}
+  This is what we wanted to show.
+    \item We now wish to show that the set of points $z \in \C$ satisfying
+    \begin{equation}  
+      \label{e:circ}
+      \left| \frac{z - z_1}{z - z_2} \right| = k, 
+    \end{equation}
+    is a circle where $z_1, z_2 \in \C$ with $z_1 \neq z_2$ and $k > 0$. We also want to find the center and radius of the circle.
+
+    Multiplying through by $|z - z_2|$ and squaring both sides we achieve
+    \begin{align*}
+      |z - z_1|^2 - k^2|z - z_2|^2 &= (z - z_1)(\bar{z} - \bar{z_1}) - k^2 \big( (z - z_2)(\bar{z} - \bar{z_2}) \big) \\
+                                   &= z\bar{z} - z\bar{z_1} - z_1\bar{z} + z_1\bar{z_1} - k^2\big( z\bar{z} - z\bar{z_2} - z_2\bar{z} + z_2\bar{z_2}\big) \\
+                                   &= (1 - k^2)z\bar{z} + (k^2\bar{z_2} - \bar{z_1})z + (k^2z_2 - z_1)\bar{z} + (|z_1|^2 - k^2|z_2|^2)
+    \end{align*}
+    Under the assumption that $k \neq 1$, we divide by $(1 - k^2)$. Now we define ${w = \left( k^2 z_2 - z_1 \right) / (1 - k^2)}$ and $\psi = k^2|z_2|^2 - |z_1|^2 $. We can then rewrite the above equations as
+    \begin{align*}
+      |z - z_1|^2 - k^2|z - z_2|^2 &= z\bar{z} - \bar{w}z - w\bar{z} + |w|^2 - (\psi + |w|^2) \\
+                                   &= z\bar{z} - \bar{w}z - w\bar{z} + |w|^2 - r^2
+    \end{align*}
+    where $r^2 = \psi + |w|^2$. We have now rewritten \cref{e:circ} on the form \cref{e:orig}
+    Hence our original equation describes a circle centered at $w$ with radius $r = \sqrt{\psi + |w|^2}$    
+
+    \item If we assume $k = 1$, then the set described in \cref{e:circ} is just the line equidistant from $z_1$ and $z_2$. In other words, its the set of points that are just as far away from $z_1$ as $z_2$.
+  \end{enumerate}
+\end{exercise}
+\end{document}
