@@ -97,7 +97,42 @@
   These yield
   \begin{align*}
     z_1 = 4e^{2\pi i /3}, \\
+    \intertext{and}
     z_2 = 4e^{4\pi i/ 3}.
   \end{align*}
+  \item We can now solve the equation
+    \begin{equation}
+      \label{e:equation} 
+      z^6 = \frac{i}{1-i} = -\frac{1}{2} + \frac{i}{2}.
+    \end{equation}
+    We are looking for the complex number $z$ such that when taken to the sixth
+    power we achieve the complex number $-1/2 + i/2$. This has to be a number
+    with one sixth of the argument and the 6'th root of the modulus of $-1/2 +
+    i/2$.
+    So, using the relations above, we find that
+    \begin{equation}
+      \notag
+      |z^6| = \frac{\sqrt{2}}{2}, \quad \text{and} \quad \arg(z^6) = \frac{3\pi}{4}.
+    \end{equation}
+    Hence, our $z$ must be the number
+    \begin{equation}
+      \notag
+      z = \sqrt[6]{\frac{\sqrt{2}}{2}}e^{\frac{\pi i}{8}}, 
+    \end{equation}
+    which when plugged back into \cref{e:equation} yields $-1/2 + i/2$.
+\end{exercise}
+
+\begin{exercise}\hfill
+  \begin{enumerate}[a)]
+    \item We wish to determine where in the complex plane the function
+      \begin{equation}
+        \notag
+        f(z) = e^{z^2}
+      \end{equation}
+      is holomorphic. By definition of holomorphism, we wish to examine the limit
+      \[
+        \lim_{h \to 0} \frac{f(z + h) - f(z)}{h} = \frac{e ^ {(z + h)^2} - e^{z^2}}{h}.
+      \]
+  \end{enumerate} 
 \end{exercise}
 \end{document}
