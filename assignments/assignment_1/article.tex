@@ -12,9 +12,10 @@
 
 \theoremstyle{definition}
 \newtheorem{exercise}{Exercise}
+\newcommand{\limh}{\lim_{h \to 0}}
 
 
-\title{
+\title[Mandatory assignment 1]{
   Mandatory assignment 1 \\ 
   \hrulefill\fbox{MAT2410}\hrulefill
 }
@@ -129,10 +130,34 @@
         \notag
         f(z) = e^{z^2}
       \end{equation}
-      is holomorphic. By definition of holomorphism, we wish to examine the limit
-      \[
-        \lim_{h \to 0} \frac{f(z + h) - f(z)}{h} = \frac{e ^ {(z + h)^2} - e^{z^2}}{h}.
-      \]
+      We see that this is the composition of two functions $g$ and $h$, with
+      $g(z) = e^z$ and $h(z) = z^2$. Hence $f = g \circ h$.  We see immediately
+      that $g$ is holomorphic, since it is \emph{analytic} on $\C$ and Theorem
+      2.6 tells us that it must then be holomorphic. We also see that $h$ is
+      holomorphic, since any complex polynomial is holomorphic, by Proposition
+      2.2. It then follows, again by Proposition 2.2, that $f$ is holomorphic, and infact \emph{entire}.
+    \item We now wish to determine if the function
+      \begin{equation}
+        \notag
+        f(z) = e^{\bar{z}}
+      \end{equation}
+      is holomorphic. Again, we see that this is the composition of two functions, but $\bar{z}$ is not holomorphic. Hence, we have to examine the limit.
+      \begin{equation}
+        \label{eq:lim}
+        \lim_{h \to 0} \frac{e^{\bar{z} + \bar{h}} - e^{\bar{z}}}{h}.
+      \end{equation}
+      We let $h = h_1 + ih_2$, and rewrite the limit as
+      \begin{align*}
+        \lim_{h \to 0} \frac{e^{\bar{z} + \bar{h}} - e^{\bar{z}}}{h} &= e^{\bar{z}} \left( \limh \frac{e^{h_1+ih_2} - 1}{h} \right) \\
+                                                                     &\overset{\frac{0}{0}}{=} e^{\bar{z}} \left( \frac{\limh }{denom} \right)
+      \end{align*}
+    
+  \end{enumerate} 
+\end{exercise}
+
+\begin{exercise}\hfill
+  \begin{enumerate}
+    \item 
   \end{enumerate} 
 \end{exercise}
 \end{document}
