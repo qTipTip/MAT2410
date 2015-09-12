@@ -7,6 +7,8 @@
 
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+
 \newcommand{\Rez}[1]{\mathrm{Re}(#1)}
 \newcommand{\Imz}[1]{\mathrm{Im}(#1)}
 
@@ -155,9 +157,47 @@
   \end{enumerate} 
 \end{exercise}
 
-\begin{exercise}\hfill
-  \begin{enumerate}
-    \item 
-  \end{enumerate} 
+\begin{exercise}
+  In this exercise we let $\gamma_R$ be the curve parametrized by $z(t) = Re^{it}$ for $t \in [0, 2\pi]$ and $R > 2$, $R \in \R$.
+  We want to show that
+  \begin{equation}
+    \label{e:int}
+    \left| \int_{\gamma_R} \frac{2z^2 - 1}{z^4 + 5z^2 + 4}\, dz \right| \leq \frac{\pi R(2R^2 + 1)}{(R^2 - 1)(R^2-4)}.
+  \end{equation}
+  We also wish to show that the integral on the left tends to 0 as $R \to \infty$.
+
+We first let $f(z) = (2z^2 - 1)/(z^4 + 5z^2 + 4)$ and observe that the denominator can be factored. Our function $f$ can therefore be written equivalently
+  as \begin{equation}
+    \notag
+    f(z) = \frac{2z^2 - 1}{(z^2 - 1)(z^2 -4)}.
+  \end{equation}
+  
+  In order to show this inequality, we want to employ the \emph{mother of all estimates}, namely
+  \begin{equation}
+    \notag
+    \left| \int_{\gamma_R} f(z) \, dz \right| \leq \sup_{t \in [0, 2\pi]} \left| f(z(t)) \right| \cdot \mathrm{length}(\gamma_R).
+  \end{equation}
+  The length of our curve, being a half circle in the upper half-plane with radius $R$, is $\mathrm{length}(\gamma_R) \pi R$.
+  Our function $f$ evaluated at $z(t)$ is then
+  \begin{equation}
+    \notag
+    f(z(t)) = \frac{2R^2e^{2it} - 1}{(R^4e^{4it} - 1)(R^4e^{4it} - 4)}
+  \end{equation}
+  with the absolute value being
+  \begin{equation}
+    \notag
+    |f(z(t))| = \frac{\left|2R^2e^{2it} - 1\right|}{\left|(R^2e^{2it} - 1)\right|\left|(R^2e^{2it} - 4)\right|} \leq \frac{|2R^2e^{2it} - 1|}{(R^2 - 1)(R^2 - 4)}
+  \end{equation}
+  where we have used the inverse triangle inequality on the denominator, ${||z|-|w|| \leq |z - w|}$. One final application of the triangle inequality gives us
+  \begin{equation}
+    \notag
+    |f(z(t))| = \frac{2R^2 + 1}{(R^2 - 1)(R^2 - 4)}.
+  \end{equation}
+  Hence the absolute value is independent of $t$, and therefore \cref{e:int} holds.
+  
+  If we now let $R \to \infty$, the right hand side in \cref{e:int} has a $R^4$
+  term in the denominator which dominates, and hence the whole expression tends
+  to $0$. Since our integral is bounded by this expression, the integral must
+  also tend to $0$ as $R \to \infty$.
 \end{exercise}
 \end{document}
