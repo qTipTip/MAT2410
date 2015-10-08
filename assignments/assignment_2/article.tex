@@ -1,0 +1,181 @@
+\documentclass[a4paper, 10pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage[]{libertine}
+\usepackage[]{microtype}
+\usepackage[]{enumerate}
+
+\theoremstyle{definition}
+\newtheorem{exrc}{Exercise}
+\newtheorem*{sltn}{Solution}
+
+\newcommand{\res}[2]{\mathrm{res}_{#1}#2}
+\renewcommand{\Im}[1]{ \mathrm{Im}(#1) }
+
+\title{ MAT2410 - Mandatory Assignment }
+\author{Ivar Haugal\o kken Stangeby}
+\begin{document}
+\maketitle
+\begin{exrc}
+  Let $f(z)$ be the complex function
+  \begin{equation}
+    \notag
+    f(z) = \frac{1}{1+z^2}.
+  \end{equation}
+  Let $r$ be a real number, $r > 0$ and let $L_r$ be the line from the point $-r$ to $r$ in $\mathbb{C}$. Let $\gamma_r$ be the upper half circle with radius $r$ and center in 0, i.e.
+  \begin{equation}
+    \notag
+    \gamma_r = \left\{ z \in \mathbb{C} : |z| = r \text{ and } \Im{z} \geq 0 \, \right\},
+  \end{equation}
+  with positive orientation.
+  \begin{enumerate}[a)]
+    \item Compute $\int_{L_r} f(z) \, dz$.
+    \item Compute $\int_{\gamma_r} f(z) \, dz$ when $r < 1$.
+    \item Compute $\int_{\gamma_r} f(z) \, dz$ when $r > 1$.
+  \end{enumerate}
+\end{exrc}
+\begin{sltn}\hfill\\
+  \begin{enumerate}[a)]
+    \item For this we recall that $(\arctan x)' = 1 / (1 + x^2)$.
+      We then see that
+      \begin{align*}
+        \notag
+        \int_{L_r} f(z) \, dz = \int_{-r}^{r} f(x) \, dx &= \arctan (r) - \arctan (-r)\\
+                              &= 2\arctan r.
+      \end{align*}
+    \item We note that $f(z)$ has poles at $z = \pm i$. For $r < 1$ we are the
+      pole at $z = i$ is not in the interior of our contour. Since $f(z)$ is
+      holomorphic in the interior, Cauchy's theorem tells us that the integral
+      $\int_{\gamma_r + L_r} f(z) \, dz = 0$ where $\gamma_r + L_r$ denotes the
+      closed curve consisting of the line between $-r$ and $r$ joined to the
+      half circle from $r$ to $-r$ with positive orientation. We then have
+      \begin{align*}
+        &\int_{\gamma_r + L_r} f(z) \, dz = \int_{\gamma_r} f(z) \, dz + 2 \arctan(r) = 0.\\
+        \intertext{Consequently, }
+        &\int_{\gamma_r} = -2\arctan(r)
+      \end{align*}
+      when $r < 1$.
+
+      On the other hand, when $r > 1$ we have a pole in our interior, hence we
+      need to compute the residue at $z = i$. Since this is a simple pole, the residue formula tells us that
+      \begin{equation}
+        \notag
+        \res{z=i}{f} = \lim_{z \to i} (z - i) f(z) = \frac{1}{2i}.
+      \end{equation}
+      We now know that our integral over $\gamma_r + L_r$ must equal $\res{z=i}f \, 2\pi i$, hence
+      \begin{equation}
+        \notag
+        \int_{\gamma_r + L_r} f(z) \, dz = \pi,
+      \end{equation}
+      and it then follows that
+      \begin{equation}
+        \notag
+        \int_{\gamma_r} f(z) \, dz = \pi - 2\arctan(r)
+      \end{equation}
+      when $r > 1$.
+  \end{enumerate}
+\end{sltn}
+\begin{exrc}
+  Let
+  \begin{equation}
+    \notag
+    f(z) = e^{1/z}.
+  \end{equation}
+  Show directly that for every $w \neq 0 \in \mathbb{C}$ and every real
+  $\varepsilon > 0$ there exists an infinite number of complex numbers $z$ with
+  $|z| < \varepsilon$ such that $f(z) = w$.
+\end{exrc}
+\begin{sltn}
+  Fix $w \in \mathbb{C}$ with $w \neq 0$ and let let $\varepsilon > 0$ be given.
+  Then we have
+  \begin{equation}
+    \notag
+    w = re^{i\theta} = e^{\ln r} e^{i\theta}.
+  \end{equation}
+  Setting $f(z) = w$ and equating exponents we see that
+  \begin{equation}
+    \notag
+    z = \frac{1}{\ln r + i\theta} = \frac{1}{\ln r + i(2\pi n)}.
+  \end{equation}
+  Taking absolute value we achieve
+  \begin{equation}
+    \notag
+    |z| = \frac{1}{|\ln r + i(2\pi n)|} = \frac{1}{\sqrt{\ln^2 r + (2\pi n)^2}}.
+  \end{equation}
+  This last expression we can force smaller than any $\varepsilon$ by choosing
+  $n$ large enough to make the denominator arbitrarily large. Hence, there
+  exists an $N \in \mathbb{N}$ such that $|z| < \varepsilon$ for all $n \geq
+  N$.
+\end{sltn}
+\begin{exrc}
+  Compute the residue of
+    \begin{equation}
+      \notag
+      f(z) = \frac{1- e^{2z}}{z^4}
+    \end{equation}
+    at 0.
+\end{exrc}
+\begin{sltn}
+  We have a singularity at $z = 0$ so we examine $f(z)$ expressed using the power series expansion of $e^{2z}$:
+  \begin{equation}
+    \notag
+    f(z) = \frac{1 - \sum^{\infty}_{n=0}\frac{(2z)^n}{n!}}{z^4} = -2z^{-3} - 2z^{-2} - \frac{4}{3}z^{-1} - \ldots
+  \end{equation}
+  The residue of $f$ at 0 is given by the coefficient of the $z^{-1}$ term in
+  the Laurent series. Hence
+  \begin{equation}
+    \notag
+    \res{z=0}{f} = \frac{-4}{3}.
+  \end{equation}
+\end{sltn}
+\begin{exrc}
+  Let
+  \begin{equation}
+    \notag
+    f(z) = \frac{z}{z^3 - (2 - i)z^2 + (1-2i)z + i}.
+  \end{equation}
+  \begin{enumerate}[a)]
+    \item Verify that $1$ is a root of $z^3 - (2-i)z^2 + (1 - 2i)z + i$ and
+    find the other roots.  \item Use the residue formula to evaluate
+      $\int_\gamma f(z) \, dz$ where $\gamma$ is the circle with center 0 and
+      radius 2, equipped with the positive orientation.
+  \end{enumerate}
+\end{exrc}
+\begin{sltn}
+  \begin{enumerate}[a)]
+    \item In order to verify that $1$ is a root of the denominator, we simply
+      plug in $z = 1$ and get
+      \begin{equation}
+        \notag
+        1 - (2 - i) + (1 - 2i) + i = 0.
+      \end{equation}
+    Hence $1$ is a root of the denominator, and consequently $(z - 1)$ is a
+    factor in the denominator. In order to find the two other roots, we simply
+    perform polynomial division by the factor we just found. This gives us
+    \begin{equation}
+      \notag
+      z ^ 2 - z + iz - i = (z +i)(z -1).
+    \end{equation}
+    We therefore have $z=1$ as a root with multiplicity 2, and $z=-i$ as a
+    simple root.
+    \item
+    We now wish to compute the integral over $\gamma$. Since the interior of
+    $\gamma$ contains our poles the residue formula tells us that this
+    integral is
+    \begin{equation}
+      \notag
+      I = \int_\gamma f(z) \, dz = 2\pi i(\res{z=1}{f} + \res{z=-i}{f}),
+    \end{equation}
+    so we simply compute these:
+    \begin{align*}
+      &\res{z=-i}{f} = \lim_{z \to -i} \frac{z}{(z-1)^2} = -\frac{1}{2} \\
+      &\res{z=i}{f} = \lim_{z \to 1} \frac{(z + i) - z}{(z + i)^2} = \frac{1}{2}
+    \end{align*}
+  We are then left with the integral being
+  \begin{equation}
+    \notag
+    I = 2\pi i \left(\frac{1}{2} - \frac{1}{2}\right) = 0
+  \end{equation}
+  and we are done.
+  \end{enumerate}
+\end{sltn}
+\end{document}
